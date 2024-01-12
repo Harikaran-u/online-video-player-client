@@ -1,0 +1,50 @@
+.player-main-container {
+  min-height: 100vh;
+  background-color: #f2f1eb;
+}
+
+.player-container {
+  padding: 20px;
+}
+.upload-file-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-info {
+  color: #191919;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.upload-btn {
+  outline: none;
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  background-color: #ecb365;
+  color: #191919;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  width: 120px;
+  padding: 12px;
+  margin-left: 20px;
+}
+.upload-icon {
+  font-size: 18px;
+  margin-right: 6px;
+}
+
+.input-file {
+  display: none;
+}
+
+.file-err-msg {
+  font-size: 14px;
+  font-weight: bold;
+  color: #ff0000;
+  margin-left: 12px;
+}

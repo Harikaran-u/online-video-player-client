@@ -1,0 +1,80 @@
+.register-main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+  height: 300px;
+  width: 500px;
+  border-radius: 6px;
+  background-color: #faf0e6;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.custom-label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #00337c;
+}
+
+.custom-input {
+  font-size: 14px;
+  padding: 10px;
+  background-color: transparent;
+  border-radius: 6px;
+  border: 2px solid #03c988;
+  outline: none;
+  width: 90%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.control-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cutom-submit-btn {
+  font-size: 16px;
+  font-weight: bold;
+  color: #dde6ed;
+  padding: 10px;
+  width: 180px;
+  margin-top: 20px;
+  background-color: #0b2447;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+}
+
+.already-user-info {
+  font-size: 14px;
+  font-weight: bold;
+  color: #00337c;
+  margin-top: 20px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #03c988;
+  cursor: pointer;
+}
+
+.custom-err-msg {
+  font-size: 12px;
+  font-weight: bold;
+  color: #d24545;
+}
+
+.service-err-head {
+  font-size: 24px;
+  color: #d24545;
+}
