@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 import "../styles/access.css";
 
 const Register = () => {
@@ -10,7 +11,7 @@ const Register = () => {
   const [isApiFail, setApiFail] = useState(false);
   const navigate = useNavigate();
 
-  const registerUser = async () => {
+  const authUser = async () => {
     const path = isPresent ? "login" : "register";
     const apiUrl = `http://localhost:3000/${path}`;
 
@@ -31,9 +32,11 @@ const Register = () => {
       const data = await response.json();
       if (response.ok) {
         const isUserId = data.userId;
-        const isAuthToken = data.AuthToken;
+        const authToken = data.AuthToken;
+        Cookies.set("authToken", authToken, { expires: 7 });
+        Cookies.set("userId", data.userId, { expires: 7 });
         isUserId && setPresent(true);
-        isAuthToken && navigate("/", { replace: true });
+        authToken && navigate("/", { replace: true });
         console.log("present sir");
       } else {
         setErrMsg(data.message);
@@ -47,7 +50,7 @@ const Register = () => {
 
   const submitUserData = (e) => {
     e.preventDefault();
-    registerUser();
+    authUser();
     setUserName("");
     setUserPwd("");
   };

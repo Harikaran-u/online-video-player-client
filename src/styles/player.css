@@ -5,6 +5,9 @@
 
 .player-container {
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .upload-file-container {
   display: flex;
@@ -47,4 +50,7 @@
   font-weight: bold;
   color: #ff0000;
   margin-left: 12px;
+}
+.main-player-control {
+  margin-top: 36px;
 }

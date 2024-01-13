@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
   padding: 24px;
+  min-height: 100vh;
 }
 .form-container {
   display: flex;
@@ -15,6 +16,7 @@
   border-radius: 6px;
   background-color: #faf0e6;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  margin-top: 20px;
 }
 
 .custom-label {
@@ -77,4 +79,5 @@
 .service-err-head {
   font-size: 24px;
   color: #d24545;
+  margin-top: 20px;
 }
