@@ -42,7 +42,6 @@ const Register = () => {
         isUserId && setPresent(true);
         setLoader(false);
         authToken && navigate("/", { replace: true });
-        console.log("present sir");
       } else {
         setLoader(false);
         setErrMsg(data.message);
