@@ -47,8 +47,6 @@ const Register = () => {
         setLoader(false);
         setErrMsg(data.message);
       }
-
-      console.log(data);
     } catch (error) {
       setApiFail(true);
     }

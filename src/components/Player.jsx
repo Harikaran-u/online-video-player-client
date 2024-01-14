@@ -28,7 +28,6 @@ const Player = () => {
     if (!authToken) {
       navigate("/access", { replace: true });
     }
-    console.log("re-load", vttUrl);
   }, [vttUrl, authToken]);
 
   const submitVideoFile = async () => {
@@ -56,7 +55,6 @@ const Player = () => {
           setLoading(false);
           const data = await response.json();
           setVideoData(data.data);
-          console.log(data.data);
         }
       } catch (error) {
         console.log("error", error);
@@ -75,7 +73,6 @@ const Player = () => {
   };
 
   const mergeSubtitles = (subtitles) => {
-    // Sort subtitles based on start time
     const sortedSubtitles = subtitles.sort((a, b) => {
       const timeA = timeStringToMilliseconds(a.start);
       const timeB = timeStringToMilliseconds(b.start);
@@ -92,11 +89,9 @@ const Player = () => {
         timeStringToMilliseconds(nextSubtitle.start) <=
         timeStringToMilliseconds(currentSubtitle.end)
       ) {
-        // Overlapping subtitles, merge them
         currentSubtitle.end = nextSubtitle.end;
         currentSubtitle.text += `\n${nextSubtitle.text}`;
       } else {
-        // Non-overlapping subtitles, add the current one to the result
         mergedSubtitles.push(currentSubtitle);
         currentSubtitle = nextSubtitle;
       }
@@ -166,11 +161,9 @@ const Player = () => {
         const subtitleUrl = data.vttUrl;
         setVttUrl(subtitleUrl);
 
-        console.log("subtitle-url", subtitleUrl);
-
         console.log("subtitle-data", data);
       } else {
-        console.log(await response.json());
+        console.log(error);
       }
     } catch (error) {
       console.log("upload-subtitle", error);
