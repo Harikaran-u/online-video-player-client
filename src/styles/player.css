@@ -54,3 +54,75 @@
 .main-player-control {
   margin-top: 36px;
 }
+
+.subtitle-form-container {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  background-color: #9dbc98;
+  padding: 18px;
+  border-radius: 6px;
+}
+.wrap-subtile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.subtitle-label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #191919;
+}
+.spl-srt-label {
+  color: #ff0000;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.time-input {
+  padding: 6px;
+  border-radius: 4px;
+  background-color: transparent;
+  border: 2px solid #191919;
+  color: #191919;
+  font-size: 12px;
+  font-weight: bold;
+  outline: none;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.subtitle-text {
+  font-size: 14px;
+  color: #191919;
+  background-color: #f2f1eb;
+  outline: none;
+  padding: 6px;
+}
+
+.subtitle-sbt-btn {
+  outline: none;
+  cursor: pointer;
+  background-color: #191919;
+  font-size: 14px;
+  color: #f2f1eb;
+  font-weight: bold;
+  padding: 10px;
+  width: 80px;
+  border: none;
+  border-radius: 4px;
+  margin-top: 20px;
+}
+
+.subtitle-note {
+  font-size: 12px;
+  font-weight: bold;
+  color: #191919;
+  margin-top: 10px;
+}
+
+.subtitle-btn-containers {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
