@@ -24,13 +24,12 @@ const Player = () => {
 
   const uploadVideoUrl = `http://localhost:3000/upload/${userId}`;
 
-  if (!authToken) {
-    navigate("/access", { replace: true });
-  }
-
   useEffect(() => {
+    if (!authToken) {
+      navigate("/access", { replace: true });
+    }
     console.log("re-load", vttUrl);
-  }, [vttUrl]);
+  }, [vttUrl, authToken]);
 
   const submitVideoFile = async () => {
     const selectedFile = fileInputRef.current.files[0];

@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
-import { MdFindReplace, MdOutlineSlowMotionVideo } from "react-icons/md";
+import { MdOutlineSlowMotionVideo } from "react-icons/md";
 import Navbar from "./Navbar";
 
 import "../styles/home.css";
@@ -9,9 +9,13 @@ import "../styles/home.css";
 const Home = () => {
   const navigate = useNavigate();
   const authToken = Cookies.get("authToken");
-  if (!authToken) {
-    navigate("/access", { replace: true });
-  }
+
+  useEffect(() => {
+    if (!authToken) {
+      navigate("/access", { replace: true });
+    }
+  }, [authToken]);
+
   return (
     <div className="home-main-container">
       <Navbar />
