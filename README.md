@@ -7,4 +7,4 @@ API Backend Base Url - https://online-video-server.onrender.com
 ---
 **Register**
 
-![Register]("https://res.cloudinary.com/diuvnny8c/image/upload/v1705236046/Screenshot_338_ezwwnx.png")
+![]("https://res.cloudinary.com/diuvnny8c/image/upload/v1705236046/Screenshot_338_ezwwnx.png")
