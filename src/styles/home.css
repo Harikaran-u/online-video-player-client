@@ -21,19 +21,7 @@
   justify-content: space-between;
   width: 240px;
 }
-.nav-links-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  list-style: none;
-  width: 140px;
-}
-.nav-link {
-  font-size: 14px;
-  color: #03c988;
-  font-weight: bold;
-  cursor: pointer;
-}
+
 .nav-log-out-btn {
   outline: none;
   cursor: pointer;
@@ -103,4 +91,41 @@
 .player-thumbnail {
   width: 400px;
   height: 400px;
+}
+
+/* device-wise-layouts */
+
+@media screen and (max-width: 576px) {
+  .home-head {
+    font-size: 16px;
+  }
+  .special-head {
+    font-size: 16px;
+  }
+  .player-thumbnail {
+    width: 220px;
+    height: 220px;
+  }
+  .player-info {
+    font-size: 14px;
+    width: 240px;
+  }
+  .player-info-container {
+    width: 220px;
+  }
+  .player-welcome-container {
+    flex-direction: column;
+  }
+  .explore-btn {
+    font-size: 12px;
+    padding: 4px;
+    width: 80px;
+  }
+  .app-head-nav {
+    font-size: 14px;
+  }
+  .nav-log-out-btn {
+    width: 56px;
+    padding: 6px;
+  }
 }

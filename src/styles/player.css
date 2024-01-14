@@ -126,3 +126,29 @@
   align-items: center;
   justify-content: space-between;
 }
+
+/* device-wise-layouts */
+
+@media screen and (max-width: 576px) {
+  .main-player-control {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .upload-info {
+    font-size: 16px;
+  }
+  .upload-btn {
+    padding: 8px;
+  }
+  .subtitle-form-container {
+    width: 264px;
+    margin-top: 10px;
+  }
+  .subtitle-sbt-btn {
+    font-size: 10px;
+    width: 80px;
+    padding: 6px;
+  }
+}

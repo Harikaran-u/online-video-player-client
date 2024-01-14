@@ -6,6 +6,10 @@
   padding: 24px;
   min-height: 100vh;
 }
+.app-head {
+  font-size: 36px;
+  color: #03c988;
+}
 .form-container {
   display: flex;
   flex-direction: column;
@@ -80,4 +84,35 @@
   font-size: 24px;
   color: #d24545;
   margin-top: 20px;
+}
+
+/* setting resonsive layouts */
+
+/* mobile-responsive */
+
+@media screen and (max-width: 576px) {
+  .app-head {
+    font-size: 16px;
+  }
+  .form-container {
+    width: 280px;
+    height: 300px;
+  }
+  .cutom-submit-btn {
+    width: 80px;
+
+    font-size: 12px;
+  }
+  .custom-input {
+    padding: 4px;
+  }
+  .custom-err-msg {
+    font-size: 12px;
+  }
+  .nav-link {
+    font-size: 12px;
+  }
+  .already-user-info {
+    font-size: 12px;
+  }
 }

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import Navbar from "./Navbar";
@@ -8,17 +8,15 @@ import ReactPlayer from "react-player";
 
 import "../styles/player.css";
 
-const sampleUrl =
-  "https://res.cloudinary.com/diuvnny8c/video/upload/v1705150131/d3xj5tiwgita3giuvtat.mp4";
-
 const Player = () => {
   const [isLoading, setLoading] = useState(false);
   const [videoData, setVideoData] = useState({});
-  const [startTime, setStartTime] = useState("00:00:00,000");
-  const [endTime, setEndTime] = useState("00:00:00,000");
+  const [startTime, setStartTime] = useState("00:00:00.000");
+  const [endTime, setEndTime] = useState("00:00:00.000");
   const [srtText, setSrtText] = useState("");
   const [subtitles, setSubtitles] = useState([]);
-  const [srtContent, setSrtContent] = useState("");
+  const [vttUrl, setVttUrl] = useState("");
+
   const fileInputRef = useRef(null);
   const authToken = Cookies.get("authToken");
   const userId = Cookies.get("userId");
@@ -29,6 +27,10 @@ const Player = () => {
   if (!authToken) {
     navigate("/access", { replace: true });
   }
+
+  useEffect(() => {
+    console.log("re-load", vttUrl);
+  }, [vttUrl]);
 
   const submitVideoFile = async () => {
     const selectedFile = fileInputRef.current.files[0];
@@ -64,7 +66,7 @@ const Player = () => {
   };
 
   const timeStringToMilliseconds = (timeString) => {
-    const [hh, mm, ss, SSS] = timeString.split(/[:,]/);
+    const [hh, mm, ss, SSS] = timeString.split(/[:.]/);
     return (
       parseInt(hh) * 3600000 +
       parseInt(mm) * 60000 +
@@ -81,7 +83,6 @@ const Player = () => {
       return timeA - timeB;
     });
 
-    // Merge overlapping subtitles
     const mergedSubtitles = [];
     let currentSubtitle = sortedSubtitles[0];
 
@@ -102,7 +103,6 @@ const Player = () => {
       }
     }
 
-    // Add the last subtitle to the result
     mergedSubtitles.push(currentSubtitle);
 
     return mergedSubtitles;
@@ -115,7 +115,6 @@ const Player = () => {
       const lastSubtitle = updatedSubtitles[updatedSubtitles.length - 1];
 
       if (lastSubtitle) {
-        // Merge if the new subtitle starts immediately after the last one
         if (
           e.target.name === "startTime" &&
           e.target.value === lastSubtitle.end
@@ -142,14 +141,14 @@ const Player = () => {
       // Merge and set the subtitles
       return mergeSubtitles(updatedSubtitles);
     });
-    setStartTime("00:00:00,000");
-    setEndTime("00:00:00,000");
+    setStartTime("00:00:00.000");
+    setEndTime("00:00:00.000");
     setSrtText("");
   };
-  // console.log(subtitles);
 
   const submitSubtitlesData = async () => {
     const videoId = videoData.videoId;
+
     const uploadSubtitleUrl = `http://localhost:3000/subtitles/${videoId}`;
     const configObj = {
       method: "POST",
@@ -165,10 +164,12 @@ const Player = () => {
       const response = await fetch(uploadSubtitleUrl, configObj);
       if (response.ok) {
         const data = await response.json();
-        const srtFile = data.srtFile;
-        console.log(srtFile);
-        setSrtContent(srtFile);
-        console.log(data);
+        const subtitleUrl = data.vttUrl;
+        setVttUrl(subtitleUrl);
+
+        console.log("subtitle-url", subtitleUrl);
+
+        console.log("subtitle-data", data);
       } else {
         console.log(await response.json());
       }
@@ -190,11 +191,28 @@ const Player = () => {
   );
 
   const player = (
-    <div className="main-player-control">
-      <ReactPlayer url={videoData.secure_url} controls subtitle={srtContent} />
+    <div className="main-player-control" key={vttUrl}>
+      <ReactPlayer
+        url={videoData.secure_url}
+        width="100%"
+        controls
+        config={{
+          file: {
+            attributes: { crossOrigin: "true" },
+            tracks: [
+              {
+                kind: "subtitles",
+                src: `${vttUrl}`,
+                default: true,
+              },
+            ],
+          },
+        }}
+        onError={() => console.log(error)}
+      />
     </div>
   );
-  console.log(srtContent, typeof srtContent);
+
   return (
     <div className="player-main-container">
       <Navbar />
@@ -222,7 +240,7 @@ const Player = () => {
         <div className="wrap-subtile-container">
           <form className="subtitle-form-container" onSubmit={addSubtitles}>
             <label className="subtitle-label" htmlFor="start-time">
-              Start time -<span className="spl-srt-label">"HH:MM:SS,MS"</span> :
+              Start time -<span className="spl-srt-label">"HH:MM:SS.MS"</span> :
             </label>
             <input
               type="text"
@@ -235,7 +253,7 @@ const Player = () => {
               required
             />
             <label className="subtitle-label" htmlFor="end-time">
-              End time -<span className="spl-srt-label">"HH:MM:SS,MS"</span> :
+              End time -<span className="spl-srt-label">"HH:MM:SS.MS"</span> :
             </label>
             <input
               type="text"
