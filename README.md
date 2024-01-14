@@ -1,5 +1,5 @@
 # Online Video Player App
-**Your Handy Video Player**
+**Your Handy Video Player Fully Responsive**
 ---
 API Backend Base Url - https://online-video-server.onrender.com
 ---
