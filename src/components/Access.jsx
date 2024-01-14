@@ -16,7 +16,7 @@ const Register = () => {
 
   const authUser = async () => {
     const path = isPresent ? "login" : "register";
-    const apiUrl = `http://localhost:3000/${path}`;
+    const apiUrl = `https://online-video-server.onrender.com/${path}`;
 
     const userData = {
       username,

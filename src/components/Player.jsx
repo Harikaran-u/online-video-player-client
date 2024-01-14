@@ -22,7 +22,7 @@ const Player = () => {
   const userId = Cookies.get("userId");
   const navigate = useNavigate();
 
-  const uploadVideoUrl = `http://localhost:3000/upload/${userId}`;
+  const uploadVideoUrl = `https://online-video-server.onrender.com/upload/${userId}`;
 
   useEffect(() => {
     if (!authToken) {
@@ -143,7 +143,7 @@ const Player = () => {
   const submitSubtitlesData = async () => {
     const videoId = videoData.videoId;
 
-    const uploadSubtitleUrl = `http://localhost:3000/subtitles/${videoId}`;
+    const uploadSubtitleUrl = `https://online-video-server.onrender.com/subtitles/${videoId}`;
     const configObj = {
       method: "POST",
       headers: {
