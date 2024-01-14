@@ -2,6 +2,9 @@
 **Your Handy Video Player**
 ---
 API Backend Base Url - https://online-video-server.onrender.com
+---
+Frontend App Link - https://ovplayerhk.netlify.app/
+---
 
 **All Parts of UI**
 ---
@@ -12,7 +15,7 @@ API Backend Base Url - https://online-video-server.onrender.com
 **Login**
 ![Login UI](https://res.cloudinary.com/diuvnny8c/image/upload/v1705236046/Screenshot_339_jdazy5.png)
 
-**Loding**
+**Loading**
 ![Loding](https://res.cloudinary.com/diuvnny8c/image/upload/v1705236046/Screenshot_340_ahpnvg.png)
 
 **Home**
@@ -23,3 +26,9 @@ API Backend Base Url - https://online-video-server.onrender.com
 
 **Video UI**
 ![Video UI](https://res.cloudinary.com/diuvnny8c/image/upload/v1705236047/Screenshot_343_j0g2rg.png)
+
+**Note**
+---
+Give custom subtitles the same as the default value
+---
+
